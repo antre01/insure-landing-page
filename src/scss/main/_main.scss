@@ -1,0 +1,444 @@
+@use "../variables/" as v;
+
+main {
+  position: relative;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include v.breakpoint(medium) {
+    top: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 440px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: url("/bg-pattern-intro-left-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: auto 25%;
+    pointer-events: none;
+    z-index: 8;
+
+    @include v.breakpoint(medium) {
+      background-size: auto 20%;
+    }
+
+    @include v.breakpoint(small) {
+      top: 800px;
+      background-image: url("/bg-pattern-intro-right-mobile.svg");
+      background-position: top right;
+      background-size: auto;
+    }
+  }
+
+  .intro-section {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(
+      to bottom,
+      var(--Dark-Blue) 70%,
+      transparent 30%
+    );
+    padding-inline: clamp(2rem, 12vw, 10rem);
+    padding-block: 6.5rem;
+
+    @include v.breakpoint("xlarge") {
+      background: linear-gradient(
+        to bottom,
+        var(--Dark-Blue) 90%,
+        transparent 10%
+      );
+    }
+
+    @include v.breakpoint(medium) {
+      background: linear-gradient(to bottom, var(--Dark-Blue));
+    }
+
+    @include v.breakpoint(small) {
+      padding-inline: 0;
+      padding-block: 0 6rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -75px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      background-image: url("/bg-pattern-intro-right-desktop.svg");
+      background-repeat: no-repeat;
+      background-position: top right;
+      background-size: auto 62%;
+      pointer-events: none;
+      z-index: 8;
+
+      @include v.breakpoint(medium) {
+        background-size: auto 55%;
+      }
+
+      @include v.breakpoint(small) {
+        top: 100px;
+        background-image: url("/bg-pattern-intro-left-mobile.svg");
+        background-position: left;
+        background-size: auto;
+      }
+    }
+
+    .content-wrapper {
+      max-width: 70rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+
+      @include v.breakpoint(medium) {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 5rem;
+        text-align: center;
+      }
+
+      @include v.breakpoint(small) {
+        gap: 2rem;
+        padding-inline: 0;
+      }
+
+      article {
+        z-index: 9;
+
+        @include v.breakpoint(medium) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding-inline: 3rem;
+        }
+
+        @include v.breakpoint(small) {
+          padding-inline: 1.55rem;
+        }
+
+        hr {
+          width: 9rem;
+          border: 0.001rem solid var(--Whiteish-Gray);
+          color: var(--Whiteish-Gray);
+
+          @include v.breakpoint(small) {
+            display: none;
+          }
+        }
+
+        h1 {
+          max-width: 500px;
+          margin-top: 4rem;
+          margin-bottom: 1.75rem;
+        }
+
+        p {
+          color: var(--Whiteish-Gray);
+          margin-bottom: 2rem;
+
+          @include v.breakpoint(small) {
+            padding-inline: 0.25rem;
+          }
+        }
+
+        button {
+          color: var(--Whiteish-Gray);
+          border-color: var(--Whiteish-Gray);
+
+          &:hover {
+            background: var(--Whiteish-Gray);
+            color: var(--Dark-Blue);
+          }
+        }
+      }
+
+      img {
+        width: clamp(300px, 40vw, 540px);
+        height: auto;
+
+        @include v.breakpoint(small) {
+          width: 100%;
+          z-index: 8;
+        }
+      }
+    }
+  }
+
+  .second-section {
+    padding-inline: clamp(2rem, 12vw, 10rem);
+    padding-block: 6.5rem;
+
+    @include v.breakpoint(medium) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-inline: 3rem;
+    }
+
+    @include v.breakpoint(small) {
+      padding-inline: 1.55rem;
+      padding-block: 6.5rem 4rem;
+      margin-top: 1rem;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 70rem;
+
+      @include v.breakpoint(small) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      hr {
+        width: 9rem;
+        border: 0.001rem solid var(--Medium-Gray);
+        color: var(--Medium-Gray);
+      }
+
+      h1 {
+        color: var(--Dark-Gray);
+        margin-top: 4rem;
+        margin-bottom: 1.75rem;
+
+        @include v.breakpoint(small) {
+          margin-top: 2.5rem;
+        }
+      }
+
+      .cards-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-top: 6rem;
+
+        @include v.breakpoint(medium) {
+          flex-direction: column;
+          align-items: center;
+          gap: 3.5rem;
+          text-align: center;
+          margin-top: 3rem;
+        }
+
+        .card {
+          max-width: 350px;
+
+          img {
+            margin-bottom: 2rem;
+          }
+
+          h2 {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .third-section {
+    width: 100%;
+    padding-inline: clamp(2rem, 12vw, 10rem);
+    padding-block: 4rem 6.5rem;
+    display: flex;
+    justify-content: center;
+
+    @include v.breakpoint(medium) {
+      padding-inline: 3rem;
+    }
+
+    @include v.breakpoint(small) {
+      padding-inline: 1.55rem;
+      padding-block: 4rem 8rem;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 70rem;
+      min-height: 250px;
+      background-color: var(--Dark-Blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 5.5rem;
+
+      @include v.breakpoint(medium) {
+        padding: 4rem 2.5rem;
+      }
+
+      @include v.breakpoint(small) {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.25rem;
+        text-align: center;
+        padding: 4rem 1.75rem;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: url("/bg-pattern-how-we-work-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: contain;
+        pointer-events: none;
+        z-index: 8;
+
+        @include v.breakpoint(small) {
+          background-image: url("/bg-pattern-how-we-work-mobile.svg");
+        }
+      }
+
+      h1 {
+        max-width: 475px;
+        font-size: 3.375rem;
+        line-height: 1;
+
+        @include v.breakpoint(medium) {
+          font-size: 2.625rem;
+        }
+
+        @include v.breakpoint(small) {
+          font-size: 2.425rem;
+        }
+      }
+
+      button {
+        color: var(--Whiteish-Gray);
+        border-color: var(--Whiteish-Gray);
+
+        &:hover {
+          background: var(--Whiteish-Gray);
+          color: var(--Dark-Blue);
+        }
+      }
+    }
+  }
+
+  footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: clamp(2rem, 12vw, 10rem);
+    padding-block: 4rem 2rem;
+    background-color: hsl(219, 100%, 97%);
+    background-image: url("/bg-pattern-footer-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: auto;
+
+    @include v.breakpoint(medium) {
+      padding-inline: 3rem;
+    }
+
+    @include v.breakpoint(small) {
+      padding-top: 5rem;
+      padding-inline: 1.55rem;
+      background-image: url("/bg-pattern-footer-mobile.svg");
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 70rem;
+
+      .header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 0.01rem solid var(--Light-Blue);
+        padding-bottom: 1.875rem;
+
+        @include v.breakpoint(small) {
+          flex-direction: column;
+          align-items: center;
+          gap: 2.25rem;
+          padding-bottom: 2.25rem;
+        }
+
+        .logo {
+          cursor: pointer;
+        }
+
+        .social-links {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+
+          a {
+            svg {
+              path {
+                transition: all 0.3s ease-in-out;
+              }
+            }
+
+            &:hover svg path {
+              fill: var(--Dark-Blue);
+            }
+          }
+        }
+      }
+
+      nav {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: clamp(2rem, 10vw, 11rem);
+        margin-top: 3rem;
+
+        @include v.breakpoint(small) {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.875rem;
+          text-align: center;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          margin-bottom: 2rem;
+
+          p {
+            font-size: 1rem;
+            font-family: "Karla", Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.06rem;
+            color: var(--Medium-Gray);
+            margin-bottom: 1.25rem;
+          }
+
+          li {
+            color: var(--Dark-Blue);
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

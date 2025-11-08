@@ -1,0 +1,131 @@
+@use "../variables/" as v;
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding-block: 1.125rem 1rem;
+  padding-inline: clamp(2rem, 12vw, 10rem);
+  background: var(--Whiteish-Gray);
+  z-index: 10;
+
+  @include v.breakpoint(small) {
+    padding-inline: 1.75rem;
+    padding-block: 1.5rem;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    max-width: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & img {
+      cursor: pointer;
+    }
+
+    & nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+
+      @include v.breakpoint(medium) {
+        position: fixed;
+        top: 66px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        flex-direction: column;
+        gap: 2rem;
+        background: var(--Dark-Gray);
+        padding-block: 3rem;
+        padding-inline: 1.5rem;
+      }
+
+      @include v.breakpoint(small) {
+        top: 80px;
+      }
+
+      &.show {
+        display: flex;
+      }
+
+      &::before {
+        @include v.breakpoint(medium) {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          background-image: url("/bg-pattern-mobile-nav.svg");
+          background-repeat: no-repeat;
+          background-position: bottom right;
+          background-size: 100%;
+          pointer-events: none;
+        }
+      }
+
+      & ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.75rem;
+
+        @include v.breakpoint(medium) {
+          flex-direction: column;
+          gap: 2.5rem;
+        }
+
+        li {
+          @include v.breakpoint(medium) {
+            color: var(--Whiteish-Gray);
+            z-index: 2;
+
+            &:hover {
+              color: var(--Medium-Gray);
+            }
+          }
+        }
+      }
+
+      button {
+        @include v.breakpoint(medium) {
+          width: 100%;
+          color: var(--Whiteish-Gray);
+          border-color: var(--Whiteish-Gray);
+          z-index: 2;
+        }
+
+        &:hover {
+          color: var(--Whiteish-Gray);
+          background: var(--Dark-Gray);
+
+          @include v.breakpoint(medium) {
+            color: var(--Dark-Gray);
+            background: var(--Whiteish-Gray);
+          }
+        }
+      }
+    }
+
+    .menu-btn {
+      display: none;
+      height: 32px;
+      width: 32px;
+      border: none;
+      background: none;
+      padding: 0;
+
+      @include v.breakpoint(medium) {
+        display: block;
+      }
+    }
+  }
+}
