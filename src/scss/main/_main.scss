@@ -303,7 +303,6 @@ main {
         background-position: top right;
         background-size: contain;
         pointer-events: none;
-        z-index: 8;
 
         @include v.breakpoint(small) {
           background-image: url("/bg-pattern-how-we-work-mobile.svg");
@@ -314,6 +313,7 @@ main {
         max-width: 475px;
         font-size: 3.375rem;
         line-height: 1;
+        z-index: 5;
 
         @include v.breakpoint(medium) {
           font-size: 2.625rem;
@@ -327,6 +327,7 @@ main {
       button {
         color: var(--Whiteish-Gray);
         border-color: var(--Whiteish-Gray);
+        z-index: 5;
 
         &:hover {
           background: var(--Whiteish-Gray);
